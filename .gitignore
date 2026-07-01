@@ -36,6 +36,7 @@
 *.x86_64
 *.hex
 *.class
+main_app
 
 # Debug files
 *.dSYM/
