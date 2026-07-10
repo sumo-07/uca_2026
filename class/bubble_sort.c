@@ -14,6 +14,7 @@ void bubble_sort(int arr[], int n) {
     }
 }
 
+
 void generate_numbers(int arr[], int n) {
     for(int i=0; i<n; i++) {
         arr[i] = rand() % 100000;
