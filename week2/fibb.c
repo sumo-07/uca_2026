@@ -4,12 +4,15 @@ int brute_force(int n) {
     int fibs[100];
     int count = 0;
     int a = 1, b = 1;
+    // generating fibb no.s
     while (a <= n) {
         fibs[count++] = a;
         int next = a + b;
         a = b;
         b = next;
     }
+
+    // actual work
     int sum = 0;
     for (int i = 1; i <= n; i++) {
         if (i % 2 == 0) {
@@ -26,13 +29,13 @@ int brute_force(int n) {
 
 int optimized(int n) {
     int sum = 0;
-    int a = 2, b = 8;
-    if (n >= 2) {
-        sum += a;
-    }
-    while (b <= n) {
-        sum += b;
-        int next = 4 * b + a;
+    int a = 1, b = 2;
+
+    while (a <= n) {
+        if (a % 2 == 0)
+            sum += a;
+
+        int next = a + b;
         a = b;
         b = next;
     }
