@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Week4</title>
+</head>
+
+<body>
+    <div id="table-container"></div>
+    <br>
+    <div id="form-container"></div>
+
+    <script src="templateLiterals.js"></script>
+    <script src="generateFormFields.js"></script>
+    <script>
+
+        document.getElementById('table-container').innerHTML = generateTable(users);
+
+        document.getElementById('form-container').innerHTML = generateForm(fields);
+    </script>
+</body>
+
+</html>
