@@ -68,16 +68,7 @@ int main() {
     srand(time(NULL));
 
     // Large dataset sizes
-    int sizes[] = {
-        10000,
-        20000,
-        40000,
-        80000,
-        160000,
-        320000,
-        640000,
-        1000000
-    };
+    int sizes[] = {2000, 4000, 6000, 8000, 10000, 12000, 14000};
 
     int numSizes = sizeof(sizes) / sizeof(sizes[0]);
 
