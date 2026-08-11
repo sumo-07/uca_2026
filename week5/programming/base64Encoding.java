@@ -70,6 +70,49 @@ public class base64Encoding {
 
     }
 
+    public static String deCode(String input) {
+        StringBuilder ans= new StringBuilder();
+
+        for(int i=0; i < input.length(); i+=4) {
+            int index1= BASE64.indexOf(input.charAt(i));
+            int index2= BASE64.indexOf(input.charAt(i + 1));
+
+            int index3= 0;
+            int index4= 0;
+
+            if(i + 2 < input.length() && input.charAt(i + 2) != '=') {
+                index3= BASE64.indexOf(input.charAt(i + 2));
+            }
+
+            if(i + 3 < input.length() && input.charAt(i + 3) != '=') {
+                index4= BASE64.indexOf(input.charAt(i + 3));
+            }
+
+            int combined= (index1 << 18) | (index2 << 12) | (index3 << 6) | (index4);
+
+            //extracting original 8 bits
+            int b1= (combined >> 16) & 255; // 255 has 8 ones
+            int b2= (combined >> 8) & 255;
+            int b3= (combined) & 255;
+
+            ans.append((char) b1);
+
+            // Don't add characters for padding
+            if (i + 2 < input.length() &&
+                input.charAt(i + 2) != '=') {
+
+                ans.append((char) b2);
+            }
+
+            if (i + 3 < input.length() &&
+                input.charAt(i + 3) != '=') {
+
+                ans.append((char) b3);
+            }
+        }
+        return ans.toString();
+    }
+
     public static void main(String[] args) {
 
         System.out.println(enCode("Man"));
@@ -78,6 +121,15 @@ public class base64Encoding {
         System.out.println(enCode("Hello World"));
         System.out.println(enCode("A"));
         System.out.println(enCode(""));
+
+        System.out.println("<------------------------------->");
+
+        System.out.println(deCode("TWFu"));
+        System.out.println(deCode("TWE="));
+        System.out.println(deCode("Q2F0"));
+        System.out.println(deCode("SGVsbG8gV29ybGQ="));
+        System.out.println(deCode("QQ=="));
+        System.out.println(deCode(""));
     }
 
 
